@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChemReact — Chemical Reaction Completer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Animated background particles -->
+  <div class="bg-particles" id="particles"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-flask">⚗️</div>
+      <div class="logo-text-wrap">
+        <span class="logo-text">Chem<span class="accent">React</span></span>
+        <span class="logo-tag">Student Lab Suite</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#examples">Quick Examples</a>
+      <a href="#database">Reaction Library</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="badge-dot"></span> Chemistry Lab Assistant
+    </div>
+    <h1>Predict & Complete Any<br/><span class="gradient-text">Chemical Reaction</span></h1>
+    <p class="hero-sub">Type formulas or reactants to get instantly balanced equations, reaction classifications, state symbols, and step-by-step product details.</p>
+  </section>
+
+  <!-- Main Reaction Input Card -->
+  <main class="main-card" id="app">
+    <div class="card">
+
+      <div class="card-header">
+        <h2>Reaction Solver</h2>
+        <p>Type reactants separated with <code>+</code> (e.g. <code>NaOH + HCl</code> or <code>Fe + CuSO4</code>)</p>
+      </div>
+
+      <div class="input-section">
+        <div class="reactant-row">
+          <label>Reactants</label>
+          <div class="input-wrap">
+            <input
+              type="text"
+              id="reactant-input"
+              placeholder="e.g. H2 + O2  or  FeCl3 + NaOH"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button class="clear-btn" id="clear-btn" title="Clear">✕</button>
+          </div>
+        </div>
+
+        <div class="arrow-row">
+          <span class="arrow">→</span>
+          <span class="arrow-label">Products</span>
+        </div>
+
+        <button class="react-btn" id="react-btn">
+          <span class="btn-icon">🔬</span> Find Products
+        </button>
+      </div>
+
+      <!-- Result Section -->
+      <div class="result-section" id="result-section" style="display:none;">
+        <div class="result-divider"></div>
+
+        <div class="result-header">
+          <span class="result-tag" id="reaction-type-tag"></span>
+          <span class="source-badge" id="source-badge"></span>
+        </div>
+
+        <div class="equation-box" id="equation-box"></div>
+
+        <div class="details-grid" id="details-grid"></div>
+
+        <div class="product-cards" id="product-cards"></div>
+
+        <!-- Safety note (shown only when AI returns a hazard) -->
+        <div class="safety-box" id="safety-box" style="display:none;">
+          <span class="safety-icon">⚠️</span>
+          <span id="safety-text"></span>
+        </div>
+      </div>
+
+      <!-- AI Loading State -->
+      <div class="ai-loading" id="ai-loading" style="display:none;">
+        <div class="result-divider"></div>
+        <div class="ai-loading-inner">
+          <div class="ai-dots"><span></span><span></span><span></span></div>
+          <p class="ai-loading-text">🤖 Asking AI Engine…</p>
+          <p class="ai-loading-sub">Balancing equation and identifying products</p>
+        </div>
+      </div>
+
+      <!-- No Match / Error -->
+      <div class="no-match" id="no-match" style="display:none;">
+        <span class="no-match-icon" id="no-match-icon">🔍</span>
+        <p id="no-match-title">Reaction not found.</p>
+        <p class="no-match-hint" id="no-match-hint"></p>
+        <div id="no-match-extra"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Enter Reactants</h3>
+        <p>Type your reactants using standard chemical formulas separated by <code>+</code>.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Instant Analysis</h3>
+        <p>Our engine matches and balances the reaction, identifying the type and conditions.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>See Products</h3>
+        <p>Get a balanced equation, product names, states of matter, and key facts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Examples Section -->
+  <section class="examples-section" id="examples">
+    <h2>Try These Examples</h2>
+    <div class="examples-grid" id="examples-grid"></div>
+  </section>
+
+  <!-- Example Reactions Section (Collapsible) -->
+  <section class="database-section" id="database">
+    <button class="db-toggle-btn" id="db-toggle-btn" aria-expanded="false">
+      <div class="db-toggle-title">
+        <h2>📚 Example Reaction Library</h2>
+        <p class="db-subtitle">Browse pre-indexed reactions (<span id="rxn-count"></span>). Click to view & search.</p>
+      </div>
+      <div class="db-toggle-arrow" id="db-toggle-arrow">▼</div>
+    </button>
+
+    <div class="db-collapse-content" id="db-collapse-content" style="display: none;">
+      <!-- Filter bar -->
+      <div class="db-filters">
+        <div class="db-search-wrap">
+          <span class="db-search-icon">🔍</span>
+          <input type="text" id="db-search" placeholder="Search by formula, name, or type…" autocomplete="off" spellcheck="false"/>
+        </div>
+        <div class="db-type-filters" id="db-type-filters"></div>
+      </div>
+
+      <div class="db-table-wrap">
+        <table class="db-table" id="db-table">
+          <thead>
+            <tr>
+              <th>Reactants</th>
+              <th>Balanced Equation</th>
+              <th>Type</th>
+              <th>Products</th>
+              <th>Energy</th>
+            </tr>
+          </thead>
+          <tbody id="db-tbody"></tbody>
+        </table>
+        <div class="db-empty" id="db-empty" style="display:none;">No reactions match your search.</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="reactions.js"></script>
+  <script src="gemini.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
