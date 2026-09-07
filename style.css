@@ -17,15 +17,20 @@
   --surface-card:  #FFFFFF;
   --surface-hover: #F8FAFC;
 
-  /* Primary Brand (Academic Indigo / Deep Cobalt) */
-  --primary:       #2563EB;
-  --primary-hover: #1D4ED8;
-  --primary-light: #EFF6FF;
+  /* Medi-Caps University Brand Palette (Deep Navy Blue & Academic Burgundy/Crimson) */
+  --primary:       #0F2B5C;          /* Medi-Caps Deep Navy Blue */
+  --primary-hover: #091D3E;
+  --primary-light: #EEF2F9;
 
-  /* Scientific Teal Accent */
-  --teal:          #0D9488;
-  --teal-light:    #F0FDFA;
-  --teal-border:   #99F6E4;
+  /* Medi-Caps Secondary Brand: Royal Burgundy / Crimson */
+  --burgundy:      #8B1D3B;          /* Medi-Caps Burgundy */
+  --burgundy-light:#FDF2F4;
+  --burgundy-border:#F5C2CD;
+
+  /* Scientific Teal Accent for Chemistry states */
+  --teal:          #0284C7;          /* Scholarly Cyan/Blue */
+  --teal-light:    #F0F9FF;
+  --teal-border:   #BAE6FD;
 
   /* Typography */
   --text-main:     #0F172A;
@@ -121,17 +126,20 @@ body {
   text-decoration: none;
 }
 
-.logo-flask {
-  width: 38px;
-  height: 38px;
+.logo-shield {
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
-  border: 1px solid #BFDBFE;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
-  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.08);
+  box-shadow: 0 3px 8px rgba(15, 43, 92, 0.2);
+}
+
+.shield-icon {
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
 }
 
 .logo-text-wrap {
@@ -148,15 +156,15 @@ body {
 }
 
 .logo-text .accent {
-  color: var(--primary);
+  color: var(--burgundy);
 }
 
 .logo-tag {
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: var(--teal);
+  color: var(--primary);
 }
 
 nav {
@@ -168,7 +176,7 @@ nav a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 6px 12px;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
@@ -185,7 +193,7 @@ nav a:hover {
   z-index: 1;
   text-align: center;
   padding: 64px 24px 32px;
-  max-width: 820px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
@@ -193,24 +201,24 @@ nav a:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--teal-light);
-  border: 1px solid var(--teal-border);
-  color: var(--teal);
+  background: var(--burgundy-light);
+  border: 1px solid var(--burgundy-border);
+  color: var(--burgundy);
   border-radius: 999px;
-  padding: 6px 16px;
-  font-size: 0.82rem;
-  font-weight: 600;
+  padding: 6px 18px;
+  font-size: 0.84rem;
+  font-weight: 700;
   letter-spacing: 0.2px;
   margin-bottom: 22px;
-  box-shadow: 0 1px 2px rgba(13, 148, 136, 0.08);
+  box-shadow: 0 1px 3px rgba(139, 29, 59, 0.08);
 }
 
 .badge-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+  background-color: var(--burgundy);
+  box-shadow: 0 0 0 3px rgba(139, 29, 59, 0.25);
 }
 
 .hero h1 {
@@ -223,7 +231,7 @@ nav a:hover {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #1D4ED8 0%, #0D9488 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--burgundy) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1152,4 +1160,127 @@ label {
   .steps { grid-template-columns: 1fr; }
   .details-grid { grid-template-columns: 1fr; }
   .equation-box { font-size: 1rem; padding: 16px; }
+  .footer-container { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .medicaps-footer { padding: 40px 20px 24px !important; }
 }
+
+/* ── Medi-Caps University Institutional Footer ── */
+.medicaps-footer {
+  position: relative;
+  z-index: 1;
+  background: #091D3E; /* Deep Medi-Caps Midnight Navy */
+  color: #E2E8F0;
+  padding: 56px 48px 30px;
+  border-top: 4px solid var(--burgundy); /* Medi-Caps Burgundy Accent Line */
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.footer-shield {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--burgundy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.footer-logo h3 {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.3px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.footer-subtitle {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #94A3B8;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.footer-desc {
+  font-size: 0.86rem;
+  color: #94A3B8;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  border-left: 3px solid var(--burgundy);
+  padding-left: 10px;
+}
+
+.footer-col address {
+  font-style: normal;
+  font-size: 0.88rem;
+  color: #CBD5E1;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.footer-contact {
+  font-size: 0.86rem;
+  line-height: 1.8;
+}
+
+.footer-contact a {
+  color: #93C5FD;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-contact a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.footer-project p {
+  font-size: 0.86rem;
+  color: #CBD5E1;
+  line-height: 1.6;
+}
+
+.footer-project strong {
+  color: #FFFFFF;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #64748B;
+}
+
