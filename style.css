@@ -1261,26 +1261,95 @@ label {
   text-decoration: underline;
 }
 
-.footer-project p {
-  font-size: 0.86rem;
+/* ── Developer Showcase Card (Focused & Eye-Catching) ── */
+.developer-showcase-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(139, 29, 59, 0.22) 100%);
+  border: 1.5px solid rgba(245, 194, 205, 0.35);
+  border-radius: 16px;
+  padding: 22px 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.developer-showcase-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(245, 194, 205, 0.65);
+  box-shadow: 0 16px 36px -4px rgba(139, 29, 59, 0.35), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.dev-badge-shine {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #F8FAFC;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.dev-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   color: #CBD5E1;
-  line-height: 1.6;
-}
-
-.footer-project strong {
-  color: #FFFFFF;
-  display: block;
+  font-weight: 600;
   margin-bottom: 4px;
-  font-size: 0.95rem;
 }
 
-.footer-bottom {
-  max-width: 1100px;
-  margin: 0 auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #64748B;
+.dev-name {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #FFFFFF 30%, #FBCFE8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
+.dev-branch-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 43, 92, 0.7);
+  border: 1px solid rgba(147, 197, 253, 0.35);
+  color: #93C5FD;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 8px;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+}
+
+.dev-dept {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  line-height: 1.4;
+  margin: 0;
+}
+
 
