@@ -14,7 +14,7 @@ const TIMEOUT  = 20000;
 
 // ── Provider configs ──
 const GROQ_URL   = "https://api.groq.com/openai/v1/chat/completions";
-const GROQ_MODEL = "groq/compound-mini";       // fastest available on this account
+const GROQ_MODEL = "qwen/qwen3.8-27b";
 
 const GEMINI_MODEL = "gemini-3.5-flash-lite";
 const GEMINI_URL   = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
